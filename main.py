@@ -1,23 +1,7 @@
 from dotenv import load_dotenv
+from modules.send_email import send_news_email
 import os
 import requests
-import smtplib
-import ssl
-
-def send_news_email(email_content):
-    host = os.getenv("HOST")
-    port = os.getenv("PORT")
-
-    username = os.getenv("USERNAME")
-    password = os.getenv("PASSWORD")
-
-    receiver = os.getenv("RECEIVER")
-    context = ssl.create_default_context()
-
-    with smtplib.SMTP_SSL(host, port, context=context) as server:
-        server.login(username, password)
-        server.sendmail(username, receiver, email_content)
-
 
 load_dotenv(".env")
 API_BASE_URL = "https://newsapi.org/v2/everything?q=microsoft&Language=en&sortBy=publishedAt&apiKey="
