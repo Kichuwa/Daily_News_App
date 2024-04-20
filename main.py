@@ -13,18 +13,22 @@ content = req.json()
 
 news_titles = []
 news_descriptions = []
+news_url = []
 article_count = 0
 
 for article in content["articles"]:
     if article["title"] is not None:
         news_titles.append(article["title"])
         news_descriptions.append(article["description"])
+        news_url.append(article["url"])
         article_count = article_count + 1
 
 raw_message = ""
 index = 0
 while index < 10:
-    raw_message += str(news_titles[index]) + "\n" + str(news_descriptions[index]) + "\n\n"
+    raw_message += (str(news_titles[index]) + "\n" +
+                    str(news_descriptions[index]) + "\n" +
+                    str(news_url[index]) + 2*"\n")
     index = index + 1
 
 # Remove raw message post testing
