@@ -31,9 +31,6 @@ while index < 10:
                     str(news_url[index]) + 2*"\n")
     index = index + 1
 
-# Remove raw message post testing
-print(raw_message)
-
 # the encode removes the issue that arrives from various ascii chars that may appear.
 email_output = f"""\
 Subject: Your Daily MS News!
